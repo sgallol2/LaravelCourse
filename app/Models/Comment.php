@@ -9,9 +9,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Comment extends Model
 {
     /**
-     * PRODUCT ATTRIBUTES
-     * $this->attributes['id'] - int - contains the product primary key (id)
+     * COMMENT ATTRIBUTES
+     * $this->attributes['id'] - int - contains the comment primary key (id)
      * $this->attributes['description'] - string - contains the comment description
+     * $this->attributes['product_id'] - int - contains the associated product id
+     * $this->attributes['created_at'] - timestamp - contains the creation date
+     * $this->attributes['updated_at'] - timestamp - contains the last update date
      * $this->product - Product - contains the associated Product
     */
 
@@ -60,6 +63,16 @@ class Comment extends Model
     public function setProduct($product): void
     {
         $this->product = $product;
+    }
+
+    public function getCreatedAt(): string
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function getUpdatedAt(): string
+    {
+        return $this->attributes['updated_at'];
     }
 }
 

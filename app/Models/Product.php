@@ -16,6 +16,8 @@ class Product extends Model
      * $this->attributes['id'] - int - contains the product primary key (id)
      * $this->attributes['name'] - string - contains the product name
      * $this->attributes['price'] - int - contains the product price
+     * $this->attributes['created_at'] - timestamp - contains the creation date
+     * $this->attributes['updated_at'] - timestamp - contains the last update date
      * $this->comments - Comment[] - contains the associated comments
     */
 
@@ -36,7 +38,7 @@ class Product extends Model
         return $this->attributes['name'];
     }
 
-    public function setName($name) : void
+    public function setName(string $name) : void
     {
         $this->attributes['name'] = $name;
     }
@@ -46,9 +48,19 @@ class Product extends Model
         return $this->attributes['price'];
     }
 
-    public function setPrice($price) : void
+    public function setPrice(int $price) : void
     {
         $this->attributes['price'] = $price;
+    }
+
+    public function getCreatedAt(): string
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function getUpdatedAt(): string
+    {
+        return $this->attributes['updated_at'];
     }
 
     public function comments(): HasMany
